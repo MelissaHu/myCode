@@ -22,5 +22,14 @@ export default new Router({
             //     component: (resolve) => { require(['../components/HelloWorld.vue'], resolve) }
             // }
 
+    }, {
+        path: '/',
+        component: BasicLayout,
+        children: [{
+            path: '/home',
+            name: 'home',
+            title: '首页',
+            component: (resolve) => { require(['../pages/Home.vue'], resolve) }
+        }]
     }]
 })

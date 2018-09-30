@@ -1,6 +1,6 @@
 <template>
 <el-container>
-  <el-header>这是头部</el-header>
+  <el-header><ml-header></ml-header></el-header>
   <el-container>
     <el-aside width="200px">侧边栏</el-aside>
     <el-main>
@@ -11,16 +11,13 @@
     
 </template>
 <script>
+import Header from './Header.vue'
 export default {
-  data() {
-    return {
-      isCollapsed: false
-    };
+  name:'BaiscLayout',
+  components:{
+    'ml-header':Header
   },
-  computed: {
-    menuitemClasses: function() {
-      return ["menu-item", this.isCollapsed ? "collapsed-menu" : ""];
-    }
+  data() {
   }
 };
 </script>
@@ -28,8 +25,8 @@ export default {
 <style>
 .el-header,
 .el-footer {
-  background-color: #b3c0d1;
-  color: #333;
+  background-color: #199ED8;
+  color: #fff;
   text-align: center;
   line-height: 60px;
 }
@@ -48,7 +45,8 @@ export default {
   line-height: 160px;
 }
 
-body > .el-container {
+.el-container {
+  width:100%;
   height: 100%;
 }
 
