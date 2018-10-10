@@ -11,7 +11,6 @@
 .container{
     width:100%;
     height: 100%;
-    background: url(../../static/images/bg.jpg) no-repeat;
     background-size: cover;
     .container-inner{
         width:100%;

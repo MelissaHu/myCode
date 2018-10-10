@@ -3,16 +3,33 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-const store = new Vuex.Store({
-    state: {
-        username: 'admin',
-        password: '123123'
-    },
-    mutations: {
-        showPeople(state, msg) {
-            state.name = msg
-        }
+const state = {
+    logined: false,
+    loginedInfo: {
+        username: '',
+        password: ''
     }
-})
+}
 
-export default store;
+const mutations = {
+    LOGIN(state) {
+        state.logined = true
+        state.loginedInfo.username = 'admin'
+        state.loginedInfo.password = '000000'
+    }
+}
+
+
+const actions = {
+    login(context) {
+        context.commit('LOGIN')
+        console.log('dd');
+    }
+}
+
+
+export default new Vuex.Store({
+    state,
+    mutations,
+    actions
+});

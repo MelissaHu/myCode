@@ -8,6 +8,25 @@ Vue.use(Router)
 export default new Router({
     routes: [{
         path: '/',
+        name: 'index',
+        title: '首页',
+        component: (resolve) => { require(['../pages/Index.vue'], resolve) }
+    }, {
+        path: '/map/index',
+        name: 'map',
+        title: '地图首页',
+        component: (resolve) => { require(['../pages/Map/MapIndex.vue'], resolve) }
+    }, {
+        path: '/home',
+        component: BlankLayout,
+        children: [{
+            path: '/home',
+            name: 'home',
+            title: '',
+            component: (resolve) => { require(['../pages/Home.vue'], resolve) }
+        }]
+    }, {
+        path: '/login',
         component: BlankLayout,
         　　children: [{
                 path: '/login',
@@ -22,14 +41,5 @@ export default new Router({
             //     component: (resolve) => { require(['../components/HelloWorld.vue'], resolve) }
             // }
 
-    }, {
-        path: '/',
-        component: BasicLayout,
-        children: [{
-            path: '/home',
-            name: 'home',
-            title: '首页',
-            component: (resolve) => { require(['../pages/Home.vue'], resolve) }
-        }]
     }]
 })

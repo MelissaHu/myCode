@@ -23,13 +23,21 @@ export default {
   name: "loginPages",
   data() {
     var checkName = (rule, value, callback) => {
+      //验证用户名
       if (!value) {
         return callback(new Error("用户名不能为空"));
+      } else {
+        console.log("username is ok");
+        callback();
       }
     };
     var checkPass = (rule, value, callback) => {
+      //验证密码
       if (!value) {
         return callback(new Error("密码不能为空"));
+      } else {
+        console.log("password is ok");
+        callback();
       }
     };
     return {
@@ -45,10 +53,19 @@ export default {
   },
   methods: {
     submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
-        console.log("submit");
-
+      this.$refs[formName].validate(valid => {
         if (valid) {
+          this.$http
+            .post("/login", this.loginForm)
+            .then(res => {
+              console.log("请求成功");
+            })
+            .catch(error => {
+              console.log("请求报错");
+            });
+
+          // this.$store.dispatch("login");
+          // console.log("submit");
         } else {
           console.log("error submit");
           return false;

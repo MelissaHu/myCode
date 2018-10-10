@@ -18,17 +18,17 @@ const produceNewsData = function() {
 }
 
 
-let loginInfo = {
-    username: 'admin',
-    password: '000'
-}
 
 
 const checkName = function(data) {
-    var obj = JSON.parse(data.body);
-    console.log(obj.username);
+    const loginInfo = {
+        username: 'admin',
+        password: '000'
+    }
+    const obj = JSON.parse(data.body);
     if (obj.username === loginInfo.username && obj.password === loginInfo.password) {
         console.log('mock', '登陆成功')
+
     } else {
         console.log('mock', '失败')
     }
@@ -36,5 +36,5 @@ const checkName = function(data) {
 }
 
 
-Mock.mock('/news/index', 'get', produceNewsData)
+// Mock.mock('/news/index', 'get', produceNewsData)
 Mock.mock('/login', 'post', (req, res) => checkName(req))
